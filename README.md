@@ -1,0 +1,1 @@
+drop !bomb on chat.
