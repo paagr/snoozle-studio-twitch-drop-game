@@ -1,31 +1,76 @@
 body {
-  background-color: lightgrey;
+  background-color: #666;
   margin: 0;
   padding: 0;
   overflow: hidden;
-  width: 100vw;
-  height: 100vh;
+  width: 800px;
+  height: 600px;
+  position: relative;
 }
 
+
+// particles
+.particles {
+  pointer-events: none;
+  position: absolute;
+  top: 34%;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+  
+  -webkit-mask-image: linear-gradient(to bottom, transparent 25%, black 75%);
+  mask-image: linear-gradient(to bottom, transparent 25%, black 75%);
+}
+
+
+// clouds
 .clouds {
-  opacity: .875;
-  position: fixed;
-  bottom: -30px;
+  pointer-events: none;
+  position: absolute;
+  bottom: 0;
+  left: 0;
   z-index: 20;
-  width: 100vw;
-  height: auto;
-  animation: moving_clouds 13s linear infinite;
+  width: 800px;
+  height: 600px;
+  overflow: hidden;
+  z-index: 20;
+  
+  &-img {
+    opacity: .89;
+    z-index: 2;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    animation: moving_clouds 34s linear infinite;
+  }
+  
+  &-bg {
+    opacity: .55;
+    z-index: 1;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    animation: moving_clouds_bg 51s linear infinite;
+  }
 }
 
 @keyframes moving_clouds {
   0%{
-    left: 0;
+    left: -100px;
     bottom: -30px;
   }
   
   25%{
-    left: -20px;
-    bottom: -35px;
+    bottom: -50px;
   }
   
   50%{
@@ -34,66 +79,142 @@ body {
   }
   
   75%{
-    left: 20px;
     bottom: -20px;
   }
   
   100%{
-    left: 0;
+    left: -100px;
     bottom: -30px;
   }
 }
 
-.target {
-  position: fixed;
-  bottom: -50px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 10;
-  height: 200px;
-  width: auto;
-  object-fit: contain;
-}
-
-@keyframes opacity_bomb {
-  0% {
-    opacity: 1;
-  }
-      
-  50% {
-    opacity: 0.675;
+@keyframes moving_clouds_bg {
+  0%{
+    left: -80px;
+    bottom: -24px;
   }
   
-  100% {
-    opacity: 1;
+  25%{
+    bottom: -40px;
+  }
+  
+  50%{
+    left: 0;
+    bottom: -24px;
+  }
+  
+  75%{
+    bottom: -16px;
+  }
+  
+  100%{
+    left: -80px;
+    bottom: -24px;
   }
 }
 
-.drop {
-  width: 40px;
-  position: relative;
-  animation: opacity_bomb 1s linear infinite;
 
+
+
+
+
+
+
+// target
+.target {
+  position: fixed;
+  bottom: -5vmin;
+  left: 30%;
+  transform: translateX(-50%);
+  width: 23vmin;
+  height: auto;
+  z-index: 10;
+}
+
+
+
+
+
+
+// drop
+.drop {
+  width: 50px;
+  position: fixed;
+  animation: dropping_bomb 2s linear infinite;
+  display: inline-block;
+  z-index: 15;
+  
   .bomb {
+    display: block;
     width: 100%;
     height: auto;
   }
-
+  
   .user-image {
     position: absolute;
     display: block;
     width: 100%;
     height: auto;
-    top: 23px;
+    top: 26.5px;
     left: 50%;
     transform: translateX(-50%);
+    
+    img {
+      display: block;
+      margin: 0 auto;
+      width: 77%;
+      height: auto;
+      border-radius: 50%;
+    }
   }
+  
+  // .avatar {
+  // }
+}
 
-  .avatar {
-    display: block;
-    margin: 0 auto;
-    width: 70%;
-    height: auto;
-    border-radius: 50%;
+.drop.landed {
+  transform: rotate(0deg);
+  animation: none;
+  
+  .bomb {
+    transform: scale(0);
+    transform-origin: bottom;
+    animation: shrink 1s ease-in-out;
+  }
+  
+}
+
+@keyframes dropping_bomb {
+  0% {
+    opacity: 1;
+    transform: rotate(-10deg);
+  }
+  
+  25% {
+    opacity: 0.55;
+  }
+  
+  50% {
+    opacity: 1;
+    transform: rotate(10deg);
+  }
+  
+  75% {
+    opacity: 0.55;
+  }
+  
+  100% {
+    opacity: 1;
+    transform: rotate(-10deg);
+  }
+}
+
+@keyframes shrink {
+  0%{
+    transform: scale(1);
+  }
+  
+  100%{
+    transform: scale(0);
   }
 }
