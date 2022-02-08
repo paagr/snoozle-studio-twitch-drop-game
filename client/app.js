@@ -41,7 +41,7 @@ function doDrop( { username, url, isAvatar = false }) {
       y: -200,
     },
     velocity: {
-      x: 1 + Math.random() * (Math.random() > 0.5 ? -1 : 1) / 2,
+      x: 3 + Math.random() * (Math.random() > 0.5 ? -1 : 1) / 2,
       y: 2 + Math.random() * 3
     }
   };
@@ -99,7 +99,7 @@ function update() {
       setTimeout(() => {
         currentUsers[drop.username] = false;
         document.body.removeChild(drop.element);
-      }, 90000);
+      }, 30000);
     }
   });
 }
