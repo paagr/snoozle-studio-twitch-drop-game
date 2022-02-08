@@ -4,20 +4,33 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Snoozle Studio Drop Game</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
+
+  <title>Snoozle Studio Twitch Drop Game</title>
 </head>
 <body>
 
-  <div class="clouds">
-    <img class="clouds-bg" src="images/clouds-bg.png" alt="Background clouds">
-    <img class="clouds-img" src="images/clouds.png" alt="Clouds">
+  <div class="leader-board">
+    <h4>Classifica</h4>
+    <div class="scores"></div>
   </div>
-  <img class="target" src="images/ruined-building.png" alt="Ruined building">
-  <div id="particles-js" class="particles"></div>
 
-  <script src="particles.js"></script>
+       <!-- <img class="avatar" src="https://static-cdn.jtvnw.net/jtv_user_pictures/2535a3b0-3f79-405b-b9f9-ac51563eda7a-profile_image-70x70.png" alt=""> -->
+      <!-- <img src="https://static-cdn.jtvnw.net/emoticons/v2/425618/default/dark/2.0" alt=""> -->
+ 
+  <img class="target" src="images/target.png" alt="target">
+
+  <div class="particles" id="particles-js"></div>
+  
+  <script src="particles.min.js"></script>
+
+  <script src="tmi.min.js"></script>
   <script src="app.js"></script>
+  
 </body>
 </html>
