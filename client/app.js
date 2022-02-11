@@ -1,4 +1,5 @@
 /* particlesJS.load(@dom-id, @path-json, @callback (optional)); */
+// eslint-disable-next-line no-undef
 particlesJS.load('particles-js', 'particlesjs-config.json', function() {
   console.log('callback - particles.js config loaded');
 });
